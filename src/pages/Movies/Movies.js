@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import { List, ListItem, Form, Input, Link, Img } from './Movies.styled';
+import { List, ListItem, Form, Input, Link, Img, Thumb } from './Movies.styled';
 const API_KEY = 'c2cddca1d76ae825076ff4418ab72190';
 const Movies = () => {
   //const [value, setValue] = useState('');
@@ -47,11 +47,27 @@ const Movies = () => {
               return (
                 <ListItem key={movie.id}>
                   <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                    <Img
-                      alt={`${movie?.title}`}
-                      src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movie?.poster_path}`}
-                    />
-                    {movie.title}
+                    <Thumb>
+                      {movie.poster_path && (
+                        <Img
+                          width="200"
+                          height="300"
+                          alt={`${movie?.title}`}
+                          src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
+                        />
+                      )}
+                      {!movie.poster_path && (
+                        <Img
+                          width="200"
+                          height="300"
+                          alt={`${movie?.title}`}
+                          src={
+                            'https://www.publicdomainpictures.net/pictures/260000/nahled/play-button-15282372642Gh.jpg'
+                          }
+                        />
+                      )}
+                      <p>{movie?.title || movie?.original_name}</p>
+                    </Thumb>
                   </Link>
                 </ListItem>
               );

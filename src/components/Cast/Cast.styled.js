@@ -12,6 +12,7 @@ export const ListItem = styled.li`
   flex-direction: column;
   max-width: 200px;
   margin: 30px;
+  text-align: center;
 `;
 export const Img = styled.img`
   display: block;

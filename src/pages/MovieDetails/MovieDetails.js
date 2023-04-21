@@ -28,10 +28,20 @@ const MovieDetails = () => {
       {movie && (
         <Container>
           <div>
-            <Img
-              alt={`${movie?.title}`}
-              src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movie?.poster_path}`}
-            />
+            {movie.poster_path && (
+              <Img
+                alt={`${movie?.title}`}
+                src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
+              />
+            )}
+            {!movie.poster_path && (
+              <Img
+                alt={`${movie?.title}`}
+                src={
+                  'https://www.publicdomainpictures.net/pictures/260000/nahled/play-button-15282372642Gh.jpg'
+                }
+              />
+            )}
           </div>
           <Description>
             <h2>{movie?.title}</h2>
@@ -52,8 +62,11 @@ const MovieDetails = () => {
                 <span>{movie?.vote_count}</span>
               </p>
             </div>
-            <Link to="cast">Cast |</Link>
-            <Link to="reviews"> Reviews</Link>
+            <div>
+              <h3>Additional information</h3>
+              <Link to="cast">Cast |</Link>
+              <Link to="reviews"> Reviews</Link>
+            </div>
           </Description>
         </Container>
       )}
