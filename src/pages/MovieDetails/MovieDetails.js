@@ -1,40 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
-import { NavLink, useParams, Outlet, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  display: flex;
-  margin-top: 20px;
-`;
-
-const Description = styled.div`
-  max-width: 800px;
-  margin-left: 40px;
-`;
-
-const Img = styled.img`
-  display: block;
-  width: 300px;
-  height: 450px;
-  margin-bottom: 10px;
-  box-shadow: 1px 3px 20px 6px rgba(0, 0, 0, 0.75);
-`;
-
-const Link = styled(NavLink)`
-  text-decoration: none;
-  font-size: 20px;
-  color: #e3b520;
-`;
-const BackLink = styled(NavLink)`
-  position: absolute;
-  top: 21px;
-  left: 20px;
-  text-decoration: none;
-  color: purple;
-`;
-
+import { useState, useEffect, useRef, Suspense } from 'react';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
+import {
+  BackLink,
+  Container,
+  Img,
+  Description,
+  Link,
+} from './MovieDetails.styled';
 const API_KEY = 'c2cddca1d76ae825076ff4418ab72190';
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
@@ -84,7 +58,12 @@ export const MovieDetails = () => {
         </Container>
       )}
 
-      <Outlet />
+      <div>
+        <Suspense feedback={<h3>Loading...</h3>}>
+          <Outlet />
+        </Suspense>
+      </div>
     </div>
   );
 };
+export default MovieDetails;

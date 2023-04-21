@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 const API_KEY = 'c2cddca1d76ae825076ff4418ab72190';
-export const Reviews = () => {
-  console.log(`reviews`);
+const Reviews = () => {
   const [reviews, setReviews] = useState(null);
   const { movieId } = useParams();
   useEffect(() => {
@@ -14,7 +13,6 @@ export const Reviews = () => {
         setReviews(results);
       });
   }, [movieId]);
-  console.log(reviews);
   return (
     <div>
       <ul>
@@ -30,3 +28,4 @@ export const Reviews = () => {
     </div>
   );
 };
+export default Reviews;

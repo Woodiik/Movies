@@ -1,33 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
-const List = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: -15px;
-  margin-top: 60px;
-  list-style: none;
-`;
-const ListItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  max-width: 200px;
-  margin: 30px;
-`;
-const Img = styled.img`
-  display: block;
-  width: 200px;
-  height: 300px;
-  margin-bottom: 10px;
-  box-shadow: 1px 3px 20px 6px rgba(0, 0, 0, 0.75);
-`;
-
-const Name = styled.h4`
-  margin: 0;
-`;
+import { List, ListItem, Img, Name } from './Cast.styled';
 const API_KEY = 'c2cddca1d76ae825076ff4418ab72190';
-export const Cast = () => {
+const Cast = () => {
   const [data, setData] = useState(null);
   const { movieId } = useParams();
   useEffect(() => {
@@ -60,3 +35,4 @@ export const Cast = () => {
     </div>
   );
 };
+export default Cast;
