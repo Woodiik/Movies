@@ -1,44 +1,53 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import { List, ListItem, Form, Input, Link, Img, Thumb } from './Movies.styled';
+import {
+  List,
+  ListItem,
+  Form,
+  Input,
+  Link,
+  Img,
+  Thumb,
+  Button,
+} from './Movies.styled';
 const API_KEY = 'c2cddca1d76ae825076ff4418ab72190';
 const Movies = () => {
-  //const [value, setValue] = useState('');
+  const [value, setValue] = useState('');
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const valueParams = searchParams.get('name') ?? '';
   const location = useLocation();
 
   useEffect(() => {
-    if (valueParams !== '') {
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${valueParams}&include_adult=false`
-      )
-        .then(res => res.json())
-        .then(({ results }) => {
-          setMovies(results);
-        });
-    }
-  }, [valueParams]);
+    if (valueParams === '') return;
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${valueParams}&include_adult=false`
+    )
+      .then(res => res.json())
+      .then(({ results }) => {
+        setMovies(results);
+      });
+  }, [value, valueParams]);
   function updateQueryString(name) {
     const nextParams = name !== '' ? { name } : {};
     setSearchParams(nextParams);
   }
   function handleSubmit(e) {
+    const { value } = e.target.elements.input;
     e.preventDefault();
-    //setValue(e.target.elements.input.value.trim());
+    setValue(value.trim());
+    updateQueryString(value.trim());
   }
   return (
     <div>
       <Form autoComplete="off" onSubmit={handleSubmit}>
         <Input
-          value={valueParams}
+          defaultValue={valueParams}
           placeholder="Search movie"
           type="text"
           name="input"
-          onChange={e => updateQueryString(e.target.value)}
         />
-        {/*<button type="submit">Search</button>*/}
+        <Button type="submit">Search</Button>
       </Form>
       {movies && (
         <div>

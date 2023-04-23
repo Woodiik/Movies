@@ -5,7 +5,7 @@ import {
   Container,
   Img,
   Description,
-  Link,
+  SLink,
 } from './MovieDetails.styled';
 const API_KEY = 'c2cddca1d76ae825076ff4418ab72190';
 const MovieDetails = () => {
@@ -64,8 +64,9 @@ const MovieDetails = () => {
             </div>
             <div>
               <h3>Additional information</h3>
-              <Link to="cast">Cast |</Link>
-              <Link to="reviews"> Reviews</Link>
+              <SLink to="cast">Cast</SLink>
+              <span> | </span>
+              <SLink to="reviews"> Reviews</SLink>
             </div>
           </Description>
         </Container>

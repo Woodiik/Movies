@@ -13,7 +13,22 @@ export const Input = styled.input`
   border: 2px solid #5a5a5a;
   border-radius: 5px;
   :focus {
-    border: 2px solid gray;
+    border-color: purple;
+  }
+`;
+export const Button = styled.button`
+  font-size: 20px;
+  color: purple;
+  cursor: pointer;
+  outline: none;
+  border: 2px solid #5a5a5a;
+  border-radius: 5px;
+  :hover {
+    border-color: purple;
+    background-color: gainsboro;
+  }
+  :active {
+    transform: scale(0.9);
   }
 `;
 export const List = styled.ul`

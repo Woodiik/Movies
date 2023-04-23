@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -19,12 +19,13 @@ export const Img = styled.img`
   box-shadow: 1px 3px 20px 6px rgba(0, 0, 0, 0.75);
 `;
 
-export const Link = styled(NavLink)`
+export const SLink = styled(NavLink)`
+  padding: 10px;
   text-decoration: none;
   font-size: 20px;
   color: #e3b520;
 `;
-export const BackLink = styled(NavLink)`
+export const BackLink = styled(Link)`
   position: absolute;
   top: 21px;
   left: 20px;

@@ -18,7 +18,7 @@ export const Nav = styled.nav`
   margin-left: 200px;
 `;
 export const Link = styled(NavLink)`
-  padding: 20px;
+  padding: 18px;
   font-size: 20px;
 
   :not(:first-child) {

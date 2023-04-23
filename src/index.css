@@ -27,3 +27,8 @@ ul {
   margin: 0;
   ;
 }
+
+.active {
+  border-bottom: 5px solid purple;
+  border-radius: 5px;
+}
